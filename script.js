@@ -18,17 +18,23 @@ const topicSelect = document.querySelector("#workshop-topic")
 
 // БЛОКИ 1–4
 // 1.2: замените событие click на submit.
-form.addEventListener("click", (event) => {
+form.addEventListener("submit", (event) => {
   // 1.3: первой строкой остановите стандартное действие формы.
 
   console.log("1.2. Получено событие", event.type)
-
+  event.preventDefault()
   // 1.3: затем покажите временное сообщение в result.
-
+  result.textContent = `${name}, заявка на тему «${topic}» принята. Подтверждение: ${email}`
 
   // 3.1: создайте FormData текущей формы.
-
-
+  const formData = new FormData(form)
+  const name = formData.get("name")
+  const email = formData.get("email")
+  const topic = formData.get("topic")
+  console.log("Имя:", name)
+  console.log("Email:", email)
+  console.log("Тема:", topic)
+  
   // 3.2: получите name, email и topic через метод get.
 
 
